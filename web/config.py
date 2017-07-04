@@ -3,7 +3,7 @@ from pymongo import MongoClient
 
 WTF_CSRF_ENABLED = True
 SECRET_KEY = 'put_your_secret_key_here'
-DB_USER = str(os.environ.get('MONGO_USER'))
+DB_USER = str(os.environ.get('MONGO_USERNAME'))
 DB_PASS = str(os.environ.get('MONGO_PASSWORD'))
 DB_NAME = str(os.environ.get('MONGO_DATABASE'))
 
