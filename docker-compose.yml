@@ -24,6 +24,13 @@ services:
     depends_on:
       - web
 
+  cert:
+    build: ./cert
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+    volumes_from:
+        - web
+
   mongodb:
     restart: always
     build: ./mongodb
