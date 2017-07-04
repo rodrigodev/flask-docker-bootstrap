@@ -6,6 +6,10 @@ services:
     build: ./web
     expose:
       - "8000"
+    environment:
+      - MONGODB_USERNAME=${MONGO_USER}
+      - MONGODB_PASSWORD=${MONGO_PASS}
+      - MONGODB_DATABASE=${MONGO_DATABASE}
     volumes:
       - /usr/src/app/project/static
     command: /usr/local/bin/gunicorn -w 2 -b :8000 project:app
@@ -30,9 +34,9 @@ services:
     ports:
       - "27017:27017"
     environment:
-      - MONGODB_USERNAME=my_user
-      - MONGODB_PASSWORD=password123
-      - MONGODB_DATABASE=my_database
+      - MONGODB_USERNAME=${MONGO_USER}
+      - MONGODB_PASSWORD=${MONGO_PASS}
+      - MONGODB_DATABASE=${MONGO_DATABASE}
     volumes:
       - 'mongodb_data:/bitnami/mongodb'
 
