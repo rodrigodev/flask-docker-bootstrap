@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    {% include "form.html" %}
+    {% for item in items %}
+      <h2> {{ item.name }} </h2>
+      <p> {{ item.description }} <p>
+      <a href="/edit/{{item._id}}"> edit </a> -
+      <a href="/delete/{{item._id}}"> delete </a>
+    {% endfor %}
+{% endblock %}

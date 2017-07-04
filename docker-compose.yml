@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  web:
+    restart: always
+    build: ./web
+    expose:
+      - "8000"
+    volumes:
+      - /usr/src/app/project/static
+    command: /usr/local/bin/gunicorn -w 2 -b :8000 project:app
+    depends_on:
+      - mongodb
+
+  nginx:
+    restart: always
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - /www/static
+    volumes_from:
+      - web
+    depends_on:
+      - web
+
+  mongodb:
+    restart: always
+    build: ./mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGODB_USERNAME=my_user
+      - MONGODB_PASSWORD=password123
+      - MONGODB_DATABASE=my_database
+    volumes:
+      - 'mongodb_data:/bitnami/mongodb'
+
+volumes:
+  mongodb_data:
+    driver: local

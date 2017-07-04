@@ -1,0 +1,12 @@
+from pymongo import MongoClient
+
+WTF_CSRF_ENABLED = True
+SECRET_KEY = 'c961184ceb88d46cdb7ec142cb741278740aa114'
+DB_NAME = 'tada'
+
+DATABASE = MongoClient("mongodb://db:27017")[DB_NAME]
+TODO_COLLECTION = DATABASE.todos
+USERS_COLLECTION = DATABASE.users
+SETTINGS_COLLECTION = DATABASE.settings
+
+DEBUG = False
