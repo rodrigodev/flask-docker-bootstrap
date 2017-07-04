@@ -1,1 +1,1 @@
-FROM bitnami/mongodb:3
+FROM mongo:latest
