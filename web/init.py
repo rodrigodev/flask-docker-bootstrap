@@ -3,7 +3,7 @@
 from werkzeug.security import generate_password_hash
 from pymongo import MongoClient
 from pymongo.errors import DuplicateKeyError
-from .config import USERS_COLLECTION
+from config import USERS_COLLECTION
 
 
 def main():
